@@ -35,7 +35,7 @@ requirements:
     - python
     - pip
     - wheel
-    - setuptools <60.0.0
+    - setuptools
     - cython
     - numpy
     - scipy
