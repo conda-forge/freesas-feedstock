@@ -14,7 +14,7 @@ build:
   # cxx standard library is unused
     - {{ compiler('cxx') }}
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   entry_points:
     - free_gpa = freesas.app.auto_gpa:main
     - free_guinier = freesas.app.auto_guinier:main
@@ -28,6 +28,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
   host:
@@ -40,7 +41,6 @@ requirements:
     - scipy
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - six
     - scipy
     - matplotlib-base
