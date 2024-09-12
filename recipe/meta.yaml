@@ -1,5 +1,5 @@
 {% set name = "freesas" %}
-{% set version = "0.9.0" %}
+{% set version = "2024.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/freesas-{{ version }}.tar.gz
-  sha256: 4b919ddea2d732a805a94b99482e68b3184f6348cfae52dec3c1fd0267dbcabd
+  sha256: 894574396cbe4c695031d06a7379e39db12dc903dd4aac6e629871284ef1da0a
 
 build:
   ignore_run_exports_from:
@@ -28,6 +28,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
   host:
