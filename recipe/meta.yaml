@@ -64,7 +64,7 @@ test:
 about:
   home: http://www.silx.org/
   summary: Free tools to analyze Small angle scattering data
-  dev_url: https://github.com/kif/freesas
+  dev_url: https://github.com/silx-kit/freesas
   doc_url: https://freesas.readthedocs.io
   license: MIT
   license_file: LICENSE
