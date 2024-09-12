@@ -31,21 +31,25 @@ requirements:
     - {{ stdlib("c") }}
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
+    - ninja
   host:
     - python
     - pip
     - wheel
-    - setuptools <60.0.0
+    - meson-python >=0.11
+    - meson >=0.64
     - cython
     - numpy
+    - pyproject-metadata >=0.5.0
+    - tomli >=1.0.0
     - scipy
+    - silx
   run:
     - python
-    - {{ pin_compatible('numpy') }}
-    - six
     - scipy
     - matplotlib-base
     - pyfai-base
+    - silx
 
 test:
   imports:
