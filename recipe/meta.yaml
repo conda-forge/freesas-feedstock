@@ -14,7 +14,7 @@ build:
   # cxx standard library is unused
     - {{ compiler('cxx') }}
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
   entry_points:
     - free_gpa = freesas.app.auto_gpa:main
     - free_guinier = freesas.app.auto_guinier:main
@@ -27,6 +27,11 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - llvm-openmp  # [osx]
