@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/freesas-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/freesas-{{ version }}.tar.gz
   sha256: 894574396cbe4c695031d06a7379e39db12dc903dd4aac6e629871284ef1da0a
 
 build:
@@ -14,7 +14,7 @@ build:
   # cxx standard library is unused
     - {{ compiler('cxx') }}
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
   entry_points:
     - free_gpa = freesas.app.auto_gpa:main
     - free_guinier = freesas.app.auto_guinier:main
