@@ -11,7 +11,7 @@ Summary: Free tools to analyze Small angle scattering data
 
 Development: https://github.com/silx-kit/freesas
 
-Documentation: https://freesas.readthedocs.io
+Documentation: https://freesas.readthedocs.io/
 
 Current build status
 ====================
