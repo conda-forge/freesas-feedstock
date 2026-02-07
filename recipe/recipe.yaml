@@ -1,0 +1,85 @@
+schema_version: 1
+
+context:
+  name: freesas
+  version: 2026.2.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/freesas-${{ version }}.tar.gz
+  sha256: 63252f631ad1fb614be15e881148cd60ae78bbf0984c0a23ea0600e4726db4b5
+
+build:
+  number: 1
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - free_gpa = freesas.app.auto_gpa:main
+      - free_guinier = freesas.app.auto_guinier:main
+      - free_rg = freesas.app.autorg:main
+      - cormapy = freesas.app.cormap:main
+      - supycomb = freesas.app.supycomb:main
+      - free_bift = freesas.app.bift:main
+      - freesas = freesas.app.plot_sas:main
+      - extract_ascii = freesas.app.extract_ascii:main
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+    - if: osx
+      then: llvm-openmp
+    - if: linux
+      then: libgomp
+    - ninja
+  host:
+    - python
+    - pip
+    - wheel
+    - meson-python >=0.11
+    - meson >=0.64
+    - cython
+    - numpy
+    - pyproject-metadata >=0.5.0
+    - tomli >=1.0.0
+    - scipy
+    - silx
+  run:
+    - python
+    - scipy
+    - matplotlib-base
+    - pyfai-base
+    - silx
+  ignore_run_exports:
+    from_package:
+      - ${{ compiler('cxx') }}
+
+tests:
+  - python:
+      imports:
+        - freesas
+  - script:
+      - free_gpa --help
+      - free_guinier --help
+      - free_rg --help
+      - cormapy --help
+      - supycomb --help
+      - free_bift --help
+      - freesas --help
+      - extract_ascii --help
+      - freesas --version
+
+about:
+  summary: Free tools to analyze Small angle scattering data
+  license: MIT
+  license_file: LICENSE
+  homepage: http://www.silx.org/
+  repository: https://github.com/silx-kit/freesas
+  documentation: https://freesas.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - beenje
