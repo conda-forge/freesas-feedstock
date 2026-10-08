@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: freesas
-  version: 2026.2.0
+  version: "2026.10.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/freesas-${{ version }}.tar.gz
-  sha256: 63252f631ad1fb614be15e881148cd60ae78bbf0984c0a23ea0600e4726db4b5
+  sha256: 7029139fc59c6fe71ecfdb453d7d34401fcbce6351411d680572cba4dae7a268
 
 build:
-  number: 1
+  number: 0
   script: ${{ PYTHON }} -m pip install . -vv
   python:
     entry_points:
